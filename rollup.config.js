@@ -1,5 +1,6 @@
 import esbuild from "rollup-plugin-esbuild";
 import terser from "@rollup/plugin-terser";
+import { dts } from "rollup-plugin-dts";
 
 const nth_identifier = (() => {
   const base54 = {
@@ -33,6 +34,11 @@ const terserPlugin = terser({
 
 export default [
   {
+    input: "src/index.d.ts",
+    output: [{ file: "dist/types.d.ts" }],
+    plugins: [dts()],
+  },
+  {
     input: "src/preferences.ts",
     external: (id) => !/^[./]/.test(id),
     plugins: [
@@ -43,7 +49,7 @@ export default [
     ],
     output: [
       {
-        file: `dist/preferences.js`,
+        file: `dist/jmspref.js`,
         format: "cjs",
         sourcemap: false,
         strict: false,
@@ -51,7 +57,7 @@ export default [
       },
       {
         file: "dist/index.js",
-        format: "esm",
+        format: "es",
         sourcemap: false,
         strict: false,
         plugins: [

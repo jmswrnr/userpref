@@ -1,8 +1,4 @@
-export type Preference<T extends string = string> = {
-  user: T | "system";
-  system: T;
-  resolved: T;
-};
+import type { Preference } from "./types";
 
 ((_document, _window, storage) => {
   // This isn't super clean, but it's to manually achieve minimal build size
@@ -117,7 +113,7 @@ export type Preference<T extends string = string> = {
     if (e.newValue && e.key.startsWith(storage_prefix)) {
       const pref = _window[module_name][
         e.key.substring(storage_prefix.length)
-      ] as Preference;
+      ] satisfies Preference;
       if (pref) {
         pref.user = e.newValue;
       }

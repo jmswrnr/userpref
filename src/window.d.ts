@@ -1,4 +1,4 @@
-import type { Preference } from "./preferences";
+import type { Preference } from "./types";
 
 declare global {
   interface WindowEventMap {
