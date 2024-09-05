@@ -5,7 +5,7 @@
 
 # jmspref
 
-Tiny user preferences utility script; originally built for [jmswrnr.com](https://jmswrnr.com)
+Tiny user preferences utility script for websites; originally built for [jmswrnr.com](https://jmswrnr.com)
 
 ```
 npm install jmspref --save-dev

@@ -18,9 +18,9 @@
     "release:major": "npm run test && npm run typecheck && release-it major"
   },
   "keywords": ["preferences", "settings", "theme", "motion", "user", "web"],
-  "author": "",
+  "author": "James Warner",
   "license": "MIT",
-  "description": "",
+  "description": "Tiny user preferences utility script for websites",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@vitest/coverage-v8": "^2.0.5",
