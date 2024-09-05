@@ -116,9 +116,17 @@ This can be used in CSS queries:
 [data-theme="dark"] {
   --background: black;
 }
+
+[data-motion='reduced'],
+[data-motion='reduced'] *,
+[data-motion='reduced'] *::after,
+[data-motion='reduced'] *::before {
+  transition-duration: 1ms !important;
+  animation-play-state: paused !important;
+}
 ```
 
-Or you could use the new [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function:
+You can also use the new [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function:
 
 ```css
 :root {
