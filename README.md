@@ -13,9 +13,10 @@ npm install jmspref --save-dev
 - 🪶 `< 1 KB` build size
 - 🏗️ Framework agnostic.
 - 💻 Defaults to utilize system values (theme & motion).
+- 💥 No flash of incorrect theme on load.
 - 🫙 Stores user preferences (local storage).
-- 🌑 Applies colorScheme to theme browser components.
-- 🔗 Syncs between all open tabs.
+- 🌑 Applies colorScheme to theme browser UI.
+- 🔗 Syncs between all open tabs and windows.
 - 🧱 Extendible with custom preferences.
 
 ## React Usage
@@ -83,6 +84,33 @@ window.addEventListener('jmspref-change', (event) => {
     preference  // { user, system, resolved }
   } = event.detail;
 });
+```
+
+### CSS
+
+All preferences are set as data attributes on the `<html>` element:
+```html
+<html data-theme="dark" data-motion="reduced">
+  ```
+
+This can be used in CSS queries:
+
+```css
+[data-theme="light"] body {
+  background: white;
+}
+
+[data-theme="dark"] body {
+  background: black;
+}
+```
+
+Or you could use the new [`light-dark`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) syntax:
+
+```css
+body {
+  background: light-dark(white, black);
+}
 ```
 
 ## Custom Preferences
