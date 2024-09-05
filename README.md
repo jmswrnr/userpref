@@ -5,20 +5,21 @@
 
 # jmspref
 
-Tiny user preferences utility script for websites; originally built for [jmswrnr.com](https://jmswrnr.com)
+User Preferences for Web Applications; originally built for [jmswrnr.com](https://jmswrnr.com) and now open source!
 
 ```
 npm install jmspref --save-dev
 ```
 
-- 🪶 `< 1 KB` build size
+- 🪶 `< 1 KB` bundle.
 - 🏗️ Framework agnostic.
-- 💻 Defaults to utilize system values (theme & motion).
-- 💥 No flash of incorrect theme on load.
-- 🫙 Stores user preferences (local storage).
-- 🌑 Applies colorScheme to theme browser UI.
-- 🔗 Syncs between all open tabs and windows.
 - 🧱 Extendible with custom preferences.
+- 💻 Defaults to system preferences for theme & motion.
+- 🫙 Saves preferences (local storage).
+- 🎨 Themes browser for light/dark UI.
+- 🌓 Supports [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function.
+- 🔗 Syncs between open tabs and windows.
+- 💥 No flash while loading theme.
 
 ## React Usage
 
@@ -106,7 +107,7 @@ This can be used in CSS queries:
 }
 ```
 
-Or you could use the new [`light-dark`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) syntax:
+Or you could use the new [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function:
 
 ```css
 body {

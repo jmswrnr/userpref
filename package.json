@@ -20,7 +20,7 @@
   "keywords": ["preferences", "settings", "theme", "motion", "user", "web"],
   "author": "James Warner",
   "license": "MIT",
-  "description": "Tiny user preferences utility script for websites",
+  "description": "User Preferences for Web Applications",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@vitest/coverage-v8": "^2.0.5",
