@@ -1,15 +1,12 @@
 import esbuild from "rollup-plugin-esbuild";
 import terser from "@rollup/plugin-terser";
 
-const bundle = (config) => ({
-  ...config,
-  input: "src/preferences.ts",
-  external: (id) => !/^[./]/.test(id),
-});
-
 const nth_identifier = (() => {
   const base54 = {
-    chars: "jmsprefdghiklnoqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$_".split(""),
+    chars:
+      "jmsprefdghiklnoqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$_".split(
+        ""
+      ),
     get: function (num) {
       var ret = "",
         base = 52;
@@ -18,7 +15,7 @@ const nth_identifier = (() => {
         num--;
         ret += this.chars[num % base];
         num = Math.floor(num / base);
-        base = 64
+        base = 64;
       } while (num > 0);
 
       return ret;
@@ -28,8 +25,16 @@ const nth_identifier = (() => {
   return base54;
 })();
 
+const terserPlugin = terser({
+  mangle: {
+    nth_identifier,
+  },
+});
+
 export default [
-  bundle({
+  {
+    input: "src/preferences.ts",
+    external: (id) => !/^[./]/.test(id),
     plugins: [
       esbuild({
         minify: true,
@@ -42,14 +47,30 @@ export default [
         format: "cjs",
         sourcemap: false,
         strict: false,
+        plugins: [terserPlugin],
+      },
+      {
+        file: "dist/index.js",
+        format: "esm",
+        sourcemap: false,
+        strict: false,
         plugins: [
-          terser({
-            mangle: {
-              nth_identifier,
+          terserPlugin,
+          {
+            name: "wrap-in-string",
+            generateBundle(options, bundle) {
+              for (const [fileName, chunk] of Object.entries(bundle)) {
+                if (chunk.type === "chunk") {
+                  chunk.code = `export const jmspref = '${chunk.code.replace(
+                    /\n/g,
+                    ""
+                  )}';`;
+                }
+              }
             },
-          }),
+          },
         ],
       },
     ],
-  }),
+  },
 ];

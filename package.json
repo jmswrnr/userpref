@@ -1,7 +1,7 @@
 {
   "name": "jmspref",
   "version": "1.0.3",
-  "main": "dist/preferences.js",
+  "main": "dist/index.js",
   "type": "module",
   "files": [
     "dist"
