@@ -7,10 +7,6 @@
 
 User Preferences for Web Applications; originally built for [jmswrnr.com](https://jmswrnr.com) and now open source!
 
-```
-npm install jmspref --save-dev
-```
-
 - 🪶 `< 1 KB` bundle.
 - 🏗️ Framework agnostic.
 - 🧱 Extendible with custom preferences.
@@ -28,6 +24,10 @@ To use this script, you must place it in a `<script>` tag as the first element i
 ### ES Module (Recommended)
 
 If using React or similar, you can use the `jmspref` module import, this is a string ready to inline with a `<script>` tag:
+
+```bash
+npm install jmspref
+```
 
 ```tsx
 import { jmspref } from "jmspref";
