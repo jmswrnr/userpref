@@ -17,7 +17,7 @@
     "release:minor": "npm run test && npm run typecheck && release-it minor",
     "release:major": "npm run test && npm run typecheck && release-it major"
   },
-  "keywords": [],
+  "keywords": ["preferences", "settings", "theme", "motion", "user", "web"],
   "author": "",
   "license": "MIT",
   "description": "",
