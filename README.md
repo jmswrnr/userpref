@@ -21,69 +21,79 @@ npm install jmspref --save-dev
 - 🔗 Syncs between open tabs and windows.
 - 💥 No flash while loading theme.
 
-## React Usage
+## Install
 
-### Include Script
-Inline the script as the first thing inside body
+To use this script, you must place it in a `<script>` tag as the first element inside `<body>`.
+
+### ES Module (Recommended)
+
+If using React or similar, you can use the `jmspref` module import, this is a string ready to inline with a `<script>` tag:
+
 ```tsx
-import { jmspref } from 'jmspref';
+import { jmspref } from "jmspref";
 
-<body>
-  <script
-    dangerouslySetInnerHTML={{
-      __html: jmspref,
-    }}
-  />
-</body>
+export default function ReactRootLayout() {
+  return (
+    <html>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: jmspref,
+          }}
+        />
+      </body>
+    </html>
+  );
+}
 ```
 
-### Set User Preference
+### JS
 
-When you want to apply the user preference:
+For an installation without using modules, you could grab the `dist/jmspref.js` build from [npm](https://www.npmjs.com/package/jmspref?activeTab=code) and copy that inside a `<script>` tag as the first element inside `<body>`.
 
-```ts
-// Theme
-window.jmspref.theme.user = 'dark';
-window.jmspref.theme.user = 'light';
-window.jmspref.theme.user = 'system';
+## API
 
-// Motion
-window.jmspref.motion.user = 'full';
-window.jmspref.motion.user = 'reduced';
-window.jmspref.motion.user = 'system';
-```
+Using the script tag will expose a `jmspref` object on `window`.
 
-### Get Resolved Value
+### `window.jmspref`
 
-The resolved value used on the website
-```ts
-// Theme
-window.jmspref.theme.resolved; // 'light'
+All preferences are available in this object.
 
-// Motion
-window.jmspref.motion.resolved; // 'reduced'
-```
+- `window.jmspref.theme`: Theme Preference
+- `window.jmspref.motion`: Motion Preference
 
-### Get System Value
+### Preference
 
-To see what the system/default value is, even if it's not being used:
+Each preference is represented as an object, you can use this to get and set preferences:
 
-```ts
-// Theme
-window.jmspref.theme.system; // 'dark'
+- `user`: The user preference
+- `system`: The system preference
+- `resolved`: The resolved preference value that is currently used (readonly)
 
-// Motion
-window.jmspref.motion.system; // 'full'
-```
-### Handle Changes
+## Examples
 
-Changes are dispatched as events:
+### Common Usage:
 
-```ts
-window.addEventListener('jmspref-change', (event) => {
-  const { 
+```tsx
+// Setting User Preference:
+jmspref.theme.user = 'dark' // set user preference to dark theme
+jmspref.theme.user = 'light' // set user preference to light theme
+jmspref.theme.user = 'system' // set user preference to system theme
+
+
+// Getting User Preference:
+jmspref.theme.user // 'dark' | 'light' | 'system'
+
+
+// Getting Resolved Preference:
+jmspref.theme.resolved // 'dark' | 'light'
+
+
+// Handle Preference Change:
+window.addEventListener("jmspref-change", (event) => {
+  const {
     key, // 'theme' | 'motion' | ...
-    preference  // { user, system, resolved }
+    preference, // { user, system, resolved }
   } = event.detail;
 });
 ```
@@ -91,58 +101,60 @@ window.addEventListener('jmspref-change', (event) => {
 ### CSS
 
 All preferences are set as data attributes on the `<html>` element:
+
 ```html
-<html data-theme="dark" data-motion="reduced">
-  ```
+<html data-theme="dark" data-motion="reduced"></html>
+```
 
 This can be used in CSS queries:
 
 ```css
-[data-theme="light"] body {
-  background: white;
+:root {
+  --background: white;
 }
 
-[data-theme="dark"] body {
-  background: black;
+[data-theme="dark"] {
+  --background: black;
 }
 ```
 
 Or you could use the new [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function:
 
 ```css
-body {
-  background: light-dark(white, black);
+:root {
+  --background: light-dark(white, black);
 }
 ```
 
 ## Custom Preferences
 
-Register custom preferences using data attributes on the script tag:
+Register custom preferences and their initial system preference using data attributes on the script tag:
 
 ```jsx
-  <script
-    dangerouslySetInnerHTML={{
-      __html: jmspref,
-    }}
-    data-audio="muted"
-  />
+<script
+  dangerouslySetInnerHTML={{
+    __html: jmspref,
+  }}
+  data-audio="muted"
+/>
 ```
 
-The example above registers an `audio` preference, and sets the system value to `"muted"`.
+The example above registers an `audio` preference, and sets the system preference to `"muted"`.
 
-The default user value will be `"system"` which resolves to `"muted"`.
+The default user preference will be `"system"` which resolves to `"muted"`.
 
 ```ts
-// Set user value
-window.jmspref.audio.user = 'enabled';
-window.jmspref.audio.user = 'muted';
-window.jmspref.audio.user = 'system';
+// Setting Custom User Preference:
+window.jmspref.audio.user = "enabled";
+window.jmspref.audio.user = "muted";
+window.jmspref.audio.user = "system";
 
-// Get resolved value
+// Getting Custom Resolved Preference:
 window.jmspref.audio.resolved; // 'enabled' | 'muted'
 
-// You can also set what the system value at runtime:
-// Set system value
-window.jmspref.audio.system = 'enabled';
-window.jmspref.audio.system = 'muted';
+// Setting Custom System Preference:
+window.jmspref.audio.system = "enabled";
+window.jmspref.audio.system = "muted";
 ```
+> [!NOTE]
+> System preferences are automatically updated on `theme` and `motion`. But you can set them for custom preferences.
