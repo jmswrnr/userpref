@@ -4,11 +4,14 @@
 
 # jmspref
 
+Tiny user preferences utility script; originally built for [jmswrnr.com](https://jmswrnr.com)
+
 ```
 npm install jmspref --save-dev
 ```
 
 - 🪶 `< 1 KB` build size
+- 🏗️ Framework agnostic.
 - 💻 Defaults to utilize system values (theme & motion).
 - 🫙 Stores user preferences (local storage).
 - 🌑 Applies colorScheme to theme browser components.
