@@ -22,8 +22,11 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
         
-      - name: CI Build
+      - name: Install
         run: npm ci
+        
+      - name: Build
+        run: npm run build
 
       - name: Publish
         run: npm publish --provenance --access public

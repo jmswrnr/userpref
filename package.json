@@ -7,7 +7,6 @@
     "dist"
   ],
   "scripts": {
-    "ci": "npm run build",
     "build": "rollup -c",
     "test": "vitest run",
     "test:watch": "vitest watch",
