@@ -1,20 +1,8 @@
-import type { Preference } from "./types";
+import type { Preference, PreferenceChangeEvent } from "./types";
 
 declare global {
   interface WindowEventMap {
-    "jmspref-change":
-      | CustomEvent<{
-          key: string;
-          preference: Preference;
-        }>
-      | CustomEvent<{
-          key: "theme";
-          preference: Preference<"dark" | "light">;
-        }>
-      | CustomEvent<{
-          key: "motion";
-          preference: Preference<"reduced" | "full">;
-        }>;
+    "jmspref-change": PreferenceChangeEvent;
   }
 
   interface Window {
