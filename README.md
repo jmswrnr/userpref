@@ -9,7 +9,7 @@ User Preferences for Web Applications; originally built for [jmswrnr.com](https:
 
 - 🪶 `< 1 KB` size and `0` dependencies.
 - 🏗️ Framework agnostic.
-- 🧱 Extendible with custom preferences.
+- 🧱 Supports custom preferences.
 - 💻 Defaults to system preferences for theme & motion.
 - 🫙 Saves preferences (local storage).
 - 🎨 Themes browser for light/dark UI.
