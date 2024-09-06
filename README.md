@@ -11,8 +11,8 @@ User Preferences for Web Applications; originally built for [jmswrnr.com](https:
 - 🏗️ Framework agnostic.
 - 🧱 Supports custom preferences.
 - 💻 Defaults to system preferences for theme & motion.
-- 🫙 Saves preferences (local storage).
-- 🎨 Themes browser for light/dark UI.
+- 🫙 Saves user preferences (local storage).
+- 🎨 Styles browser UI for light / dark theme.
 - 🌓 Supports [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function.
 - 🔗 Syncs between open tabs and windows.
 - 💥 No flash while loading theme.
