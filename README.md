@@ -76,18 +76,15 @@ Each preference is represented as an object, you can use this to get and set pre
 
 ```tsx
 // Setting User Preference:
-jmspref.theme.user = 'dark' // set user preference to dark theme
-jmspref.theme.user = 'light' // set user preference to light theme
-jmspref.theme.user = 'system' // set user preference to system theme
-
+jmspref.theme.user = "dark"; // set user preference to dark theme
+jmspref.theme.user = "light"; // set user preference to light theme
+jmspref.theme.user = "system"; // set user preference to system theme
 
 // Getting User Preference:
-jmspref.theme.user // 'dark' | 'light' | 'system'
-
+jmspref.theme.user; // 'dark' | 'light' | 'system'
 
 // Getting Resolved Preference:
-jmspref.theme.resolved // 'dark' | 'light'
-
+jmspref.theme.resolved; // 'dark' | 'light'
 
 // Handle Preference Change:
 window.addEventListener("jmspref-change", (event) => {
@@ -117,10 +114,10 @@ This can be used in CSS queries:
   --background: black;
 }
 
-[data-motion='reduced'],
-[data-motion='reduced'] *,
-[data-motion='reduced'] *::after,
-[data-motion='reduced'] *::before {
+[data-motion="reduced"],
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::after,
+[data-motion="reduced"] *::before {
   transition-duration: 1ms !important;
   animation-play-state: paused !important;
 }
@@ -165,4 +162,66 @@ window.jmspref.audio.system = "enabled";
 window.jmspref.audio.system = "muted";
 ```
 > [!NOTE]
-> System preferences are automatically updated on `theme` and `motion`. But you can set them for custom preferences.
+> System preferences are automatically updated on `theme` and `motion`.
+> But you can set them for custom preferences.
+
+## React + TypeScript Example
+
+If you need to access the preference using React, you can use a hook like this:
+
+```ts
+"use client";
+
+import type { Preference, PreferenceChangeEvent } from "jmspref";
+import { useEffect, useState } from "react";
+
+export const useReadPreference = (type: string) => {
+  const [preference, setPreference] = useState<Preference | null>(
+    typeof window === 'undefined'
+      ? null
+      : Object.freeze({ ...window.jmspref[type] }),
+  );
+
+  useEffect(() => {
+    const handleChange = (event: PreferenceChangeEvent) => {
+      if (event.detail.key === type) {
+        setPreference(Object.freeze({ ...event.detail.preference }));
+      }
+    };
+
+    window.addEventListener('jmspref-change', handleChange);
+    return () => {
+      window.removeEventListener('jmspref-change', handleChange);
+    };
+  }, [type]);
+
+  return preference;
+};
+```
+
+> [!NOTE]
+> This example hook is only intended for reading the preferences.
+> This is because we create a new object to easily re-render in React on change.
+
+#### Example usage:
+
+```tsx
+export function ToggleTheme() {
+  const theme = useReadPreference("theme");
+
+  return (
+    <>
+      <div>Current theme: {theme.resolved}</div>
+      <button onClick={() => (window.jmspref.theme.user = "dark")}>
+        Use Dark Theme
+      </button>
+      <button onClick={() => (window.jmspref.theme.user = "light")}>
+        Use Light Theme
+      </button>
+      <button onClick={() => (window.jmspref.theme.user = "system")}>
+        Use System Theme
+      </button>
+    </>
+  );
+}
+```
