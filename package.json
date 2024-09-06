@@ -1,6 +1,6 @@
 {
   "name": "jmspref",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "typings": "dist/types.d.ts",
   "type": "module",
@@ -17,7 +17,14 @@
     "release:minor": "npm run test && npm run typecheck && release-it minor",
     "release:major": "npm run test && npm run typecheck && release-it major"
   },
-  "keywords": ["preferences", "settings", "theme", "motion", "user", "web"],
+  "keywords": [
+    "preferences",
+    "settings",
+    "theme",
+    "motion",
+    "user",
+    "web"
+  ],
   "author": "James Warner",
   "license": "MIT",
   "description": "User Preferences for Web Applications",
