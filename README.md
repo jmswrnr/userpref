@@ -19,15 +19,15 @@ Simple User Preferences for Web Apps.
 
 ## Install
 
-To use this script, you must place it in a `<script>` tag as the first element inside `<body>`.
+Add the userpref `<script>` tag as the first element inside `<body>`, this is important to avoid a flash of the incorrect theme.
 
 ### ES Module (Recommended)
-
-With React or similar, you can use the `source` named module import, this is a string ready to inline with a `<script>` tag.
 
 ```bash
 npm install userpref
 ```
+
+With React or similar, you can use the `source` named export:
 
 ```tsx
 import { source } from "userpref";
