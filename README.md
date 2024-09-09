@@ -143,11 +143,11 @@ Register custom preferences and their initial system preference using data attri
   dangerouslySetInnerHTML={{
     __html: source,
   }}
-  data-audio="muted"
+  data-audio="muted" // Register "audio" preference with default system preference of "muted"
 />
 ```
 
-The example above registers an `audio` preference, and sets the system preference to `"muted"`.
+
 
 The default user preference will be `"system"` which resolves to `"muted"`.
 
