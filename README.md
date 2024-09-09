@@ -153,16 +153,16 @@ The default user preference will be `"system"` which resolves to `"muted"`.
 
 ```ts
 // Setting Custom User Preference:
-window.userpref.audio.user = "enabled";
-window.userpref.audio.user = "muted";
-window.userpref.audio.user = "system";
+userpref.audio.user = "enabled";
+userpref.audio.user = "muted";
+userpref.audio.user = "system";
 
 // Getting Custom Resolved Preference:
-window.userpref.audio.resolved; // 'enabled' | 'muted'
+userpref.audio.resolved; // 'enabled' | 'muted'
 
 // Setting Custom System Preference:
-window.userpref.audio.system = "enabled";
-window.userpref.audio.system = "muted";
+userpref.audio.system = "enabled";
+userpref.audio.system = "muted";
 ```
 > [!NOTE]
 > System preferences are automatically updated on `theme` and `motion`.
