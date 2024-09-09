@@ -1,5 +1,5 @@
 {
-  "name": "jmspref",
+  "name": "userpref",
   "version": "1.0.6",
   "main": "dist/index.js",
   "typings": "dist/types.d.ts",
@@ -41,6 +41,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmswrnr/jmspref.git"
+    "url": "https://github.com/jmswrnr/userpref.git"
   }
 }

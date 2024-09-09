@@ -49,7 +49,7 @@ export default [
     ],
     output: [
       {
-        file: `dist/jmspref.js`,
+        file: `dist/userpref.js`,
         format: "cjs",
         sourcemap: false,
         strict: false,
@@ -67,7 +67,7 @@ export default [
             generateBundle(options, bundle) {
               for (const [fileName, chunk] of Object.entries(bundle)) {
                 if (chunk.type === "chunk") {
-                  chunk.code = `export const jmspref = '${chunk.code.replace(
+                  chunk.code = `export const source = '${chunk.code.replace(
                     /\n/g,
                     ""
                   )}';`;

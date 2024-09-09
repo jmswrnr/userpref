@@ -1,11 +1,11 @@
-[![NPM Version](https://img.shields.io/npm/v/jmspref?logo=npm&label=%20&labelColor=%23cb0000&color=%23cb0000)](https://www.npmjs.com/package/jmspref)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/jmspref?labelColor=%2322212C&color=%238aff80)](https://bundlephobia.com/package/jmspref)
+[![NPM Version](https://img.shields.io/npm/v/userpref?logo=npm&label=%20&labelColor=%23cb0000&color=%23cb0000)](https://www.npmjs.com/package/userpref)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/userpref?labelColor=%2322212C&color=%238aff80)](https://bundlephobia.com/package/userpref)
 [![Static Badge](https://img.shields.io/badge/Made_by_James_Warner-000000?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyMHB4IiBmaWxsPSIjZThlYWVkIj48cGF0aCBkPSJNNDgwLTQ4MHEtNjAgMC0xMDItNDJ0LTQyLTEwMnEwLTYwIDQyLTEwMnQxMDItNDJxNjAgMCAxMDIgNDJ0NDIgMTAycTAgNjAtNDIgMTAydC0xMDIgNDJaTTE5Mi0xOTJ2LTk2cTAtMjMgMTIuNS00My41VDIzOS0zNjZxNTUtMzIgMTE2LjUtNDlUNDgwLTQzMnE2MyAwIDEyNC41IDE3VDcyMS0zNjZxMjIgMTMgMzQuNSAzNHQxMi41IDQ0djk2SDE5MloiLz48L3N2Zz4%3D)](https://jmswrnr.com/)
 [![Static Badge](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/jmswrnr)
 
-# jmspref
+# userpref
 
-User Preferences for Web Applications; originally built for [jmswrnr.com](https://jmswrnr.com) and now open source!
+Simple User Preferences for Web Apps.
 
 - 🪶 `< 1 KB` size and `0` dependencies.
 - 🏗️ Framework agnostic.
@@ -23,14 +23,14 @@ To use this script, you must place it in a `<script>` tag as the first element i
 
 ### ES Module (Recommended)
 
-If using React or similar, you can use the `jmspref` module import, this is a string ready to inline with a `<script>` tag:
+If using React or similar, you can use the `userpref` module import, this is a string ready to inline with a `<script>` tag:
 
 ```bash
-npm install jmspref
+npm install userpref
 ```
 
 ```tsx
-import { jmspref } from "jmspref";
+import { source } from "userpref";
 
 export default function ReactRootLayout() {
   return (
@@ -38,7 +38,7 @@ export default function ReactRootLayout() {
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: jmspref,
+            __html: userpref,
           }}
         />
       </body>
@@ -49,18 +49,18 @@ export default function ReactRootLayout() {
 
 ### JS
 
-For an installation without using modules, you could grab the `dist/jmspref.js` build from [npm](https://www.npmjs.com/package/jmspref?activeTab=code) and copy that inside a `<script>` tag as the first element inside `<body>`.
+For an installation without using modules, you could grab the `dist/userpref.js` build from [npm](https://www.npmjs.com/package/userpref?activeTab=code) and copy that inside a `<script>` tag as the first element inside `<body>`.
 
 ## API
 
-Using the script tag will expose a `jmspref` object on `window`.
+Using the script tag will expose a `userpref` object on `window`.
 
-### `window.jmspref`
+### `window.userpref`
 
 All preferences are available in this object.
 
-- `window.jmspref.theme`: Theme Preference
-- `window.jmspref.motion`: Motion Preference
+- `window.userpref.theme`: Theme Preference
+- `window.userpref.motion`: Motion Preference
 
 ### Preference
 
@@ -76,18 +76,18 @@ Each preference is represented as an object, you can use this to get and set pre
 
 ```tsx
 // Setting User Preference:
-jmspref.theme.user = "dark"; // set user preference to dark theme
-jmspref.theme.user = "light"; // set user preference to light theme
-jmspref.theme.user = "system"; // set user preference to system theme
+userpref.theme.user = "dark"; // set user preference to dark theme
+userpref.theme.user = "light"; // set user preference to light theme
+userpref.theme.user = "system"; // set user preference to system theme
 
 // Getting User Preference:
-jmspref.theme.user; // 'dark' | 'light' | 'system'
+userpref.theme.user; // 'dark' | 'light' | 'system'
 
 // Getting Resolved Preference:
-jmspref.theme.resolved; // 'dark' | 'light'
+userpref.theme.resolved; // 'dark' | 'light'
 
 // Handle Preference Change:
-window.addEventListener("jmspref-change", (event) => {
+window.addEventListener("userpref-change", (event) => {
   const {
     key, // 'theme' | 'motion' | ...
     preference, // { user, system, resolved }
@@ -138,7 +138,7 @@ Register custom preferences and their initial system preference using data attri
 ```jsx
 <script
   dangerouslySetInnerHTML={{
-    __html: jmspref,
+    __html: userpref,
   }}
   data-audio="muted"
 />
@@ -150,16 +150,16 @@ The default user preference will be `"system"` which resolves to `"muted"`.
 
 ```ts
 // Setting Custom User Preference:
-window.jmspref.audio.user = "enabled";
-window.jmspref.audio.user = "muted";
-window.jmspref.audio.user = "system";
+window.userpref.audio.user = "enabled";
+window.userpref.audio.user = "muted";
+window.userpref.audio.user = "system";
 
 // Getting Custom Resolved Preference:
-window.jmspref.audio.resolved; // 'enabled' | 'muted'
+window.userpref.audio.resolved; // 'enabled' | 'muted'
 
 // Setting Custom System Preference:
-window.jmspref.audio.system = "enabled";
-window.jmspref.audio.system = "muted";
+window.userpref.audio.system = "enabled";
+window.userpref.audio.system = "muted";
 ```
 > [!NOTE]
 > System preferences are automatically updated on `theme` and `motion`.
@@ -172,14 +172,14 @@ If you need to access the preference using React, you can use a hook like this:
 ```ts
 "use client";
 
-import type { Preference, PreferenceChangeEvent } from "jmspref";
+import type { Preference, PreferenceChangeEvent } from "userpref";
 import { useEffect, useState } from "react";
 
 export const useReadPreference = (type: string) => {
   const [preference, setPreference] = useState<Preference | null>(
     typeof window === 'undefined'
       ? null
-      : Object.freeze({ ...window.jmspref[type] }),
+      : Object.freeze({ ...window.userpref[type] }),
   );
 
   useEffect(() => {
@@ -189,9 +189,9 @@ export const useReadPreference = (type: string) => {
       }
     };
 
-    window.addEventListener('jmspref-change', handleChange);
+    window.addEventListener('userpref-change', handleChange);
     return () => {
-      window.removeEventListener('jmspref-change', handleChange);
+      window.removeEventListener('userpref-change', handleChange);
     };
   }, [type]);
 
@@ -212,13 +212,13 @@ export function ToggleTheme() {
   return (
     <>
       <div>Current theme: {theme.resolved}</div>
-      <button onClick={() => (window.jmspref.theme.user = "dark")}>
+      <button onClick={() => (window.userpref.theme.user = "dark")}>
         Use Dark Theme
       </button>
-      <button onClick={() => (window.jmspref.theme.user = "light")}>
+      <button onClick={() => (window.userpref.theme.user = "light")}>
         Use Light Theme
       </button>
-      <button onClick={() => (window.jmspref.theme.user = "system")}>
+      <button onClick={() => (window.userpref.theme.user = "system")}>
         Use System Theme
       </button>
     </>

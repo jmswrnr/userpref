@@ -2,7 +2,7 @@ import type { Preference } from "./types";
 
 ((_document, _window, storage) => {
   // This isn't super clean, but it's to manually achieve minimal build size
-  const module_name = "jmspref";
+  const module_name = "userpref";
   const storage_prefix = `${module_name}-`;
   const html = _document.documentElement;
   const str_resolved = "resolved";
