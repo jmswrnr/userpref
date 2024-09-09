@@ -10,8 +10,8 @@ Simple User Preferences for Web Apps.
 - 🪶 `< 1 KB` size and `0` dependencies.
 - 🏗️ Framework agnostic.
 - 🫙 Saves user preference.
-- 🔗 Changes update all tabs.
 - 💻 Defaults to system preference.
+- 🔗 Changes are updated on all tabs.
 - 🧱 Supports custom preference definitions.
 - 🎨 Styles browser UI for light / dark theme.
 - 🌓 Supports [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function.
