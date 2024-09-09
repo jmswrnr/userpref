@@ -60,7 +60,7 @@ Using the script tag will expose a `userpref` object on `window`.
 
 ### `window.userpref`
 
-All preferences are available in this object.
+All preferences are available in this object. The built-in preferences are:
 
 - `window.userpref.theme`: Theme Preference
 - `window.userpref.motion`: Motion Preference
