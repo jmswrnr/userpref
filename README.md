@@ -9,12 +9,12 @@ Simple User Preferences for Web Apps.
 
 - 🪶 `< 1 KB` size and `0` dependencies.
 - 🏗️ Framework agnostic.
-- 🧱 Supports custom preferences.
-- 💻 Defaults to system preferences for theme & motion.
-- 🫙 Saves user preferences (local storage).
+- 🫙 Saves user preference.
+- 🔗 Changes update all tabs.
+- 💻 Defaults to system preference.
+- 🧱 Supports custom preference definitions.
 - 🎨 Styles browser UI for light / dark theme.
 - 🌓 Supports [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) CSS function.
-- 🔗 Syncs between open tabs and windows.
 - 💥 No flash while loading theme.
 
 ## Install
@@ -138,7 +138,7 @@ Register custom preferences and their initial system preference using data attri
 ```jsx
 <script
   dangerouslySetInnerHTML={{
-    __html: userpref,
+    __html: source,
   }}
   data-audio="muted"
 />
