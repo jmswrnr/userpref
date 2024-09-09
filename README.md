@@ -38,7 +38,7 @@ export default function ReactRootLayout() {
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: userpref,
+            __html: source,
           }}
         />
       </body>
