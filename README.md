@@ -23,7 +23,7 @@ To use this script, you must place it in a `<script>` tag as the first element i
 
 ### ES Module (Recommended)
 
-If using React or similar, you can use the `userpref` module import, this is a string ready to inline with a `<script>` tag:
+With React or similar, you can use the `source` named module import, this is a string ready to inline with a `<script>` tag.
 
 ```bash
 npm install userpref
@@ -47,9 +47,12 @@ export default function ReactRootLayout() {
 }
 ```
 
-### JS
+### Manual
 
-For an installation without using modules, you could grab the `dist/userpref.js` build from [npm](https://www.npmjs.com/package/userpref?activeTab=code) and copy that inside a `<script>` tag as the first element inside `<body>`.
+You could also grab the `dist/userpref.js` build from [npm](https://www.npmjs.com/package/userpref?activeTab=code) and copy that inside a `<script>` tag.
+
+> [!WARNING]
+> You will not get updates to this module if you manually copy the script.
 
 ## API
 
