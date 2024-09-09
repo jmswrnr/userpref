@@ -27,7 +27,7 @@
   ],
   "author": "James Warner",
   "license": "MIT",
-  "description": "User Preferences for Web Applications",
+  "description": "Simple User Preferences for Web Apps",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@vitest/coverage-v8": "^2.0.5",
