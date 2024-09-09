@@ -1,6 +1,6 @@
 {
   "name": "userpref",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "typings": "dist/types.d.ts",
   "type": "module",
